@@ -11,23 +11,27 @@ const app = new Vue ({
     el : '#app',
     data : {
        apiURL : 'https://flynn.boolean.careers/exercises/api/random/mail',
-       emailGenerata : '',
+       mails: [],
     },
     created() {
        this.genEmail();
     },
     methods: {
         genEmail() {
+            
+            for (let i = 0; i < 10; i++) {
+
             axios.get(this.apiURL)
             .then(response => {
            // handle success
            console.log(response);
-           this.emailGenerata = response.data.response
+           this.mails.push(response.data.response)
            })
           .catch(error => {
           // handle error
           console.log(error);
           })
         }
+      }
     }
 })

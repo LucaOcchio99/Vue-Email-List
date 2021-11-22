@@ -9,9 +9,12 @@
 </head>
 <body>
     <div id="app">
-       <ol>
-           <li>{{ emailGenerata }}</li>
+       <ol v-if="mails.length === 10">
+           <li v-for="mail in mails">
+               {{mail}}
+           </li>
        </ol>
+       <div v-else>Loading email...</div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
